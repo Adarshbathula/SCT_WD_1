@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Navigation Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            height: 200vh; /* Make the page long enough to demonstrate scrolling */
+            background-color: #f3f4f6;
+            color: #1f2937;
+        }
+
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #1f2937;
+            color: #f9fafb;
+            text-align: center;
+        }
+
+        .content-section {
+            padding: 4rem 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Custom styling for the navbar */
+        .navbar {
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .navbar-scrolled {
+            background-color: #1f2937;
+        }
+
+        .navbar-text-scrolled {
+            color: #f9fafb;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <header id="navbar" class="navbar fixed top-0 left-0 right-0 z-50 p-4 transition-colors duration-300 ease-in-out">
+        <nav class="container mx-auto flex justify-center items-center">
+            <ul class="flex space-x-8">
+                <li><a href="#home" class="nav-item text-white hover:text-blue-400 transition-colors duration-200 font-semibold rounded-md p-2">Home</a></li>
+                <li><a href="#services" class="nav-item text-white hover:text-blue-400 transition-colors duration-200 font-semibold rounded-md p-2">Services</a></li>
+                <li><a href="#about" class="nav-item text-white hover:text-blue-400 transition-colors duration-200 font-semibold rounded-md p-2">About</a></li>
+                <li><a href="#contact" class="nav-item text-white hover:text-blue-400 transition-colors duration-200 font-semibold rounded-md p-2">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="hero-section">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-4 transition-colors duration-200 hover:text-blue-400">Welcome To our Web page</h1>
+            <p class="text-lg md:text-xl max-w-2xl px-4">Scroll down !</p>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="content-section bg-white rounded-xl shadow-lg mt-8 p-6 md:p-10">
+            <h2 class="text-3xl font-bold mb-4">Our Services</h2>
+            <p class="text-gray-700 leading-relaxed">
+                We offer a wide range of services designed to help you achieve your goals. From web development and graphic design to digital marketing and consulting, our team is dedicated to providing high-quality solutions tailored to your needs. Our expertise ensures that every project is handled with precision and care, delivering results that exceed your expectations.
+            </p>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="content-section bg-white rounded-xl shadow-lg mt-8 p-6 md:p-10">
+            <h2 class="text-3xl font-bold mb-4">About Us</h2>
+            <p class="text-gray-700 leading-relaxed">
+                We are a passionate team committed to innovation and excellence. With years of experience in the industry, we have a proven track record of success. We believe in building strong relationships with our clients and working together to bring their visions to life. Our collaborative approach and attention to detail set us apart, making us a trusted partner for businesses of all sizes.
+            </p>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="content-section bg-white rounded-xl shadow-lg mt-8 p-6 md:p-10 mb-8">
+            <h2 class="text-3xl font-bold mb-4">Contact</h2>
+            <p class="text-gray-700 leading-relaxed">
+                Ready to start your next project? Get in touch with us today! You can reach us via phone, email, or by filling out the contact form below. We're excited to hear from you and discuss how we can help you succeed.
+            </p>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const navbar = document.getElementById("navbar");
+            const navItems = document.querySelectorAll(".nav-item");
+
+            window.addEventListener("scroll", function() {
+                // If the user has scrolled past the hero section, apply the scrolled class
+                if (window.scrollY > window.innerHeight - 50) {
+                    navbar.classList.add("navbar-scrolled", "shadow-lg");
+                    navItems.forEach(item => item.classList.add("navbar-text-scrolled"));
+                } else {
+                    navbar.classList.remove("navbar-scrolled", "shadow-lg");
+                    navItems.forEach(item => item.classList.remove("navbar-text-scrolled"));
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
